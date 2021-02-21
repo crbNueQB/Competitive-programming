@@ -5,13 +5,6 @@
 using namespace std;
 using ll = long long;
 
-float distance(float x1, float x2,  float y1, float y2){
-    float result = 0;
-    result = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
-
-    return result;
-}
-
 int main() {
     int N; cin >> N;
     vector<int> v(N);
