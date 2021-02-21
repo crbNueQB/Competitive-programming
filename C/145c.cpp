@@ -5,23 +5,39 @@
 using namespace std;
 using ll = long long;
 
+float distance(float x1, float x2,  float y1, float y2){
+    float result = 0;
+    result = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+
+    return result;
+}
+
 int main() {
     int N; cin >> N;
     vector<int> v(N);
-    iota(v.begin(), v.end(), 1); 
+    for (int i = 0; i < N; ++i) v.at(i) = i;
 
-    vector<int> x(N);
-    vector<int> y(N);
+    vector<int> x(N,0);
+    vector<int> y(N,0);
 
     for (int i = 0; i < N; ++i){
         cin >> x.at(i) >> y.at(i);
     }
-
+    int count = 0;
+    long double sum = 0;
     do{
-        for (int i = 0; i < N; ++i){
-            
+        ++count;
+        for (int i = 0; i < N-1; ++i){
+            int a = v[i];
+            int b = v[i+1];
+
+            long double dx = x[a] - x[b];
+            long double dy = y[a] - y[b];
+
+            sum += sqrt(dx * dx + dy * dy);
         }
     } while(next_permutation(v.begin(), v.end()));
     
+    cout << fixed << setprecision(10) <<sum/count << endl;
     return 0;
 }
