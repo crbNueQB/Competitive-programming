@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     int N, M; cin >> N >> M;
 
-    bool graph[N][M];
+    bool graph[10][10];
     for (int i = 0; i < M; ++i){
         int a, b;
         cin >> a >> b; --a; --b;
@@ -22,7 +22,7 @@ int main() {
         for (int i = 0; i + 1 < N; ++i){
 
             if(graph[v[i]][v[i+1]] != true){
-                res = false; break;
+                res = false;
             }
         }
         if(res) count++;
