@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <random>
 using namespace std;
 
 #define WIN true
@@ -13,8 +14,12 @@ list<int> monte;
 int return_random(){
     int s;
     bool w;
-    srand(time(NULL));
-    s = rand() % 1000 + 1;
+    std::random_device rnd;     // 非決定的な乱数生成器を生成
+    std::mt19937 mt(rnd());     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
+    std::uniform_int_distribution<> rand100(0, 999);        // [0, 999] 範囲の一様乱数
+
+    s = rand100(mt);
+    
     if(s <= 505) w = WIN;
     else w = LOSE;
     return w;
@@ -29,11 +34,11 @@ void init_monte(){
 void calc_monte(bool w){
     if(w){
         auto itr = monte.begin();
-            monte.erase(itr);
-            if(!monte.empty()){            
-                auto itrr = monte.end();
-                monte.erase(itrr);
-            }
+        monte.erase(itr);
+        if(!monte.empty()){            
+            auto itrr = monte.end();
+            monte.erase(itrr);
+        }
     }else{
             monte.push_back(monte.front() + monte.back());
     }
