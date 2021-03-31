@@ -49,17 +49,20 @@ int main() {
         Lots = monte.front() + monte.back();
         if(return_random()){
             pf += (PROFIT - COST - SPREAD) * Lots;
+            calc_monte(WIN);
         }else{
             pf -= (DEPROFIT + COST + SPREAD) * Lots;
+            calc_monte(LOSE);
         }
-        /*
+        
         if(!monte.empty()){
             for (auto lst = monte.begin(); lst != monte.end(); ++lst){
                 cout << *lst << " ";
             }
             cout << endl;
-        }*/
+        }
+        cout << "pf" << pf << endl;
     }
-    cout << "pf" << pf << endl;
+    cout << "spf" << pf << endl;
     return 0;
 }
