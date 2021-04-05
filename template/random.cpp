@@ -50,7 +50,7 @@ int main() {
     int Lots = 0;
     double sumpf = 0;
     double pf = 0;
-    for (int i = 1; i <= 100000; ++i){
+    for (int i = 1; i <= 1000000; ++i){
         if(monte.empty()) init_monte();
         Lots = monte.front() + monte.back();
         if(return_random()){

@@ -9,6 +9,11 @@ long long GCD(long long a, long long b) {
     else return GCD(b, a % b);
 }
 
+//最小公倍数は最大公約数を用いて求めることができる。
+long long LCM(long long a, long long b) {
+    return a / GCD(a, b) * b;
+}
+
 int main() {
     //cin >> ;
 
