@@ -62,16 +62,21 @@ int main() {
             sumpf += Lots * bLot * tpf;
             calc_monte(LOSE);
         }
-        /*
+        
         if(!monte.empty()){
             for (auto lst = monte.begin(); lst != monte.end(); ++lst){
-                cout << *lst << " ";
+                if(*lst == 50){
+                    for (auto lls = monte.begin(); lls != monte.end(); ++ lls){
+                        cout << *lls << ",";
+                    }
+                    cout << endl;
+                    return 0;
+                }
             }
-            cout << endl;
-        }*/
+        }
         //cout << "pf" << pf << endl;
     }
-    cout << "spf" << pf << endl;
-    cout << "tpf" << sumpf << endl;
+    //cout << "spf" << pf << endl;
+    //cout << "tpf" << sumpf << endl;
     return 0;
 }
