@@ -22,6 +22,6 @@ int main() {
     if(C == 0) rem = 1;
     if(C >= 1) rem = C + 1;
     cout << rem << endl;
-
+    
     return 0;
 }
