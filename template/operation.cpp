@@ -16,7 +16,7 @@ int num = int(dou); // >>> 4
 //文字列から数値へ
 string str = "12";
 int num = str-'0'; // <-'0'を引くことでintへ 
-
+long long num = stoll(str); // long long への変換
 //ASCII番号
 //文字からASCII番号へ
 char ch = 'a';

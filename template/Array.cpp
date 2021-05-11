@@ -39,3 +39,12 @@ swap(a, b);
 
 //xの2乗
 pow(x,2);
+
+vector<vector<要素の型>> 変数名(要素数1, vector<要素の型>(要素数2, 初期値));
+vector<vector<要素の型>> 変数名(要素数1, vector<要素の型>(要素数2));  // 初期値を省略
+
+表のようなデータを扱う場合、一般的には次のようにします。
+
+vector<vector<要素の型>> 変数名(縦の要素数, vector<要素の型>(横の要素数));
+
+vector<vector<int>> data(3, vector<int>(4));
