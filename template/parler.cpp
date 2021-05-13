@@ -22,31 +22,39 @@ int return_random(){
 
     s = rand100(mt);
     
-    if(s <= 499) w = WIN;
+    if(s <= 500) w = WIN;
     else w = LOSE;
     return w;
 }
 
 int main(){
     double init = 0.01;
-    int shisan = 100000;
+    double shisan = 10000;
     int w = 0;
-    for(int i = 0; i < 100000; i++){
+    double bonus = 0;
+    for(int i = 0; i < 10000; i++){
         int k = return_random();
+        bonus += 150 * init;        
         if(k == WIN){
-            shisan += 43 * init;
+            shisan = shisan + 47 * init * 100;
+            //cout << shisan << endl;
             init *= 2;
             w++;
             if(w == 3){
                 init = 0.01;
+                w = 0;
             }
         }else if(k == LOSE){
-            shisan -= 57 * init;
+            shisan = shisan - 60 * init * 100;
+            //cout << shisan << endl;
             init = 0.01;
             w = 0;
         }
+
         if(shisan <= 0) break;
+
     }
     cout << shisan << endl;
+    cout << bonus << endl;
     return 0;
 }

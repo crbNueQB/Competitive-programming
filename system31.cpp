@@ -8,7 +8,7 @@ using namespace std;
 #define SPREAD 1.2
 #define PROFIT 4.2
 #define DEPROFIT 2.0
-#define bLot 0.01
+#define bLot 0.02
 #define tpf 4.75
 
 list<int> monte;
@@ -55,38 +55,36 @@ int main() {
     double mpf = pf;
     double bonus = 0;
     int make = 0;
-    int m = 0;
+    int m = 0;int k = 0;
     int kati = 0;
-    for (int i = 1; i <= 1000; ++i){
-        if(monte.empty()) {
-            init_monte();
-            m++;
-        }
-        Lots = monte.front() + monte.back();
-        if(Lots >= 10000) {
-            init_monte();
-            Lots = monte.front() + monte.back();
-            losscut++;
-        }        
-        //cout << "lot" << Lots << ",";
+    vector<int> f = {1, 1, 2, 2, 4, 4, 8, 8};
+    int f_hairetu = 0;
+    for (int i = 1; i <= 100000; ++i){
+        Lots = f.at(f_hairetu);
+        f_hairetu++;
+        cout << "lot" << Lots << ",";
         mlot = max(Lots, mlot);
         if(return_random()){
-            pf =  pf + 21400 * Lots * bLot - 700 * Lots * bLot ;
-            //pf = pf + 2000 * Lots * bLot;
+            pf =  pf + 7000 * Lots * bLot - 700 * Lots * bLot ;
             //cout << "ppf" << 6000 * Lots * bLot - 700 * Lots * bLot << endl;
             //sumpf += Lots * bLot * tpf;
             kati++; m = 0;
-            //cout << "kati" << endl;
-            calc_monte(WIN);
+            cout << "kati" << endl;
+            k++;
+            if(k >= 2) {
+                k = 0;
+                f_hairetu = 0;
+            }
         }else{
-            pf = pf - 20000 * Lots * bLot - 700 * Lots * bLot ;
-            //pf = pf - 2000 * Lots * bLot;
+            pf = pf - 5600 * Lots * bLot - 700 * Lots * bLot ;
             //cout << "mpf" << -6000 * Lots * bLot - 700 * Lots * bLot  << endl;
             //sumpf += Lots * bLot * tpf;
-            //cout << "make" << endl;
+            cout << "make" << endl;
             make++;
-            calc_monte(LOSE);
+            m++;
+            k = 0;
         }
+        if(f_hairetu >= 8) f_hairetu = 0;
         bonus += 150 * bLot * Lots;
         mpf = min(mpf, pf);
         if(pf <= 216) {
@@ -103,7 +101,6 @@ int main() {
         //cout << "pf" << pf << endl;
     }
     //cout << "mlot" << mlot << endl;
-    cout << "m" << m << endl;
     cout << "spf" << pf << endl;
     cout << "mpf" << mpf << endl;
     cout << "losscut" << losscut << endl;
